@@ -1,4 +1,4 @@
-global.BrainFile = "./db.json";
+global.BrainFile = "./brain.json";
 global.Brain = {};
 
 global.persistBrain = function() {
@@ -13,10 +13,8 @@ global.persistBrain = function() {
 };
 
 global.loadBrain = function() {
-	try {
-		return require(global.BrainFile);
-	} catch(e){}
-	return require('./db.default.json');
+	try {return require(global.BrainFile); } catch(e){}
+	return {Archive: [], Todos: []};
 };
 
 global.Brain = global.loadBrain();
