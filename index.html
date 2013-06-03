@@ -10,9 +10,7 @@
 	<link rel="stylesheet" href="styles/css/todo.css">
 </head>
 <body>
-	<h2>Todo</h2>
 	<div ng-controller="TodoCtrl">
-		<span>{{remaining()}} of {{todos.length}} remaining</span>
 		[ <a href="" ng-click="doArchive()">archive</a> ]
 		<ul class="unstyled">
 			<li ng-repeat="todo in todos">
@@ -26,14 +24,8 @@
 			<input type="text" ng-model="todoText"  size="30" placeholder="Conquer the world">
 			<input class="btn btn-primary" type="submit" value="add">
 		</form>
-	</div>
 
-	<div>
-		<ul class="unstyled">
-			<li ng-repeat="todo in archive">
-				<span class="done-true">{{todo.text}}</span>
-			</li>
-		</ul>
-</div>
+		<small class="muted">{{remaining()}} of {{todos.length}} remaining</small>
+	</div>
 </body>
 </html>
