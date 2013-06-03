@@ -27,5 +27,13 @@
 			<input class="btn btn-primary" type="submit" value="add">
 		</form>
 	</div>
+
+	<div>
+		<ul class="unstyled">
+			<li ng-repeat="todo in archive">
+				<span class="done-true">{{todo.text}}</span>
+			</li>
+		</ul>
+</div>
 </body>
 </html>

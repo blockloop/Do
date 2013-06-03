@@ -28,7 +28,15 @@
         "max_height": 600
     },
     "webkit": {
-        "plugin": true
+        "plugin": false,
+        "page-cache": true
     }
+    // "repositories": [
+    //    {
+    //         "type": "git", 
+    //         "url": "http://github.com/example.git",
+    //         "path": "packages/mypackage"
+    //    }
+    // ]
 
 }

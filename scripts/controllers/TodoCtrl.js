@@ -1,15 +1,8 @@
 var _ = require("underscore");
 
 var TodoCtrl = function($scope) {
-	$scope.todos = [
-		{
-			text: "something",
-			done: false
-		}, {
-			text: "something else",
-			done: true
-		}
-	];
+	$scope.archive = global.Do.brain.Archive;
+	$scope.todos = global.Do.brain.Todos;
 
 	$scope.addTodo = function() {
 		$scope.todos.push({
@@ -17,32 +10,23 @@ var TodoCtrl = function($scope) {
 			done: false
 		});
 		$scope.todoText = "";
-		global.Do.brain = {
-			Todos: $scope.todos
-		};
-		return global.Do.persistBrain();
+		$scope.refresh();
 	};
 
 	$scope.remaining = function() {
-		var count;
-
-		count = 0;
-		angular.forEach($scope.todos, function(todo) {
-			return count += (todo.done ? 0 : 1);
-		});
-		return count;
+		return _.filter($scope.todos, function(todo) { return !todo.done; }).length;
 	};
 
 	$scope.doArchive = function() {
-		var oldTodos;
-
-		oldTodos = $scope.todos;
-		$scope.todos = [];
-		return angular.forEach(oldTodos, function(todo) {
-			if (!todo.done) {
-				return $scope.todos.push(todo);
-			}
-		});
+		$scope.archive = _.filter($scope.todos, function(todo) { return todo.done; });
+		$scope.todos = _.filter($scope.todos, function(todo) { return !todo.done; });
+		$scope.refresh();
 	};
+
+	$scope.refresh = function() {
+		global.Do.brain.Todos = $scope.todos
+		global.Do.brain.Archive = $scope.archive;
+		global.Do.persistBrain();
+	}
 };
 
