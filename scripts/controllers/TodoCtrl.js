@@ -1,8 +1,8 @@
 var _ = require("underscore");
 
 var TodoCtrl = function($scope) {
-	$scope.archive = global.Do.brain.Archive;
-	$scope.todos = global.Do.brain.Todos;
+	$scope.archive = global.Brain.Archive;
+	$scope.todos = global.Brain.Todos;
 
 	$scope.addTodo = function() {
 		$scope.todos.push({
@@ -24,9 +24,9 @@ var TodoCtrl = function($scope) {
 	};
 
 	$scope.refresh = function() {
-		global.Do.brain.Todos = $scope.todos
-		global.Do.brain.Archive = $scope.archive;
-		global.Do.persistBrain();
+		global.Brain.Todos = $scope.todos
+		global.Brain.Archive = $scope.archive;
+		global.persistBrain();
 	}
 };
 
