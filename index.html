@@ -1,10 +1,13 @@
 <!doctype html>
 <html ng-app>
 <head>
+	<script type="text/javascript">
+		window.$ = require('jquery');
+	</script>
 
 	<script type="text/javascript" src="scripts/app.js"></script>
-	<script type="text/javascript" src="scripts/lib/angular.min.js"></script>
-	<script type="text/javascript" src="scripts/controllers/TodoCtrl.js"></script>
+	<script async type="text/javascript" src="scripts/lib/angular.min.js"></script>
+	<script async type="text/javascript" src="scripts/todo.js"></script>
 
 	<link rel="stylesheet" href="styles/css/bootstrap.flatly.css">
 	<link rel="stylesheet" href="styles/css/todo.css">
@@ -22,7 +25,7 @@
 		</ul>
 		<form ng-submit="addTodo()" class="form-inline">
 			<input type="text" ng-model="todoText"  size="30" placeholder="Conquer the world">
-			<input class="btn btn-primary" type="submit" value="add">
+			<input class="btn btn-small" type="submit" value="add">
 		</form>
 
 		<small class="muted">{{remaining()}} of {{todos.length}} remaining</small>

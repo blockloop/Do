@@ -6,6 +6,7 @@
     "keywords": [ "minimal", "todo", "to", "do" ],
     "dependencies": {
         "angular": ">= 0.0.4",
+        "jquery": ">= 1.8.3",
         "underscore": "*"
     },
     "devDependencies": {
@@ -15,7 +16,6 @@
         "grunt-contrib-less": "*",
         "less": "*"
     },
-    "keywords": [ "demo", "node-webkit" ],
     "window": {
         "icon": "app_icon.png",
         "toolbar": true,
@@ -31,12 +31,4 @@
         "plugin": false,
         "page-cache": true
     }
-    // "repositories": [
-    //    {
-    //         "type": "git", 
-    //         "url": "http://github.com/example.git",
-    //         "path": "packages/mypackage"
-    //    }
-    // ]
-
 }

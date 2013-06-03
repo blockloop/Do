@@ -5,9 +5,12 @@ var TodoCtrl = function($scope) {
 	$scope.todos = global.Brain.Todos;
 
 	$scope.addTodo = function() {
+		var stamp = new Date().getTime();
 		$scope.todos.push({
+			created: stamp,
 			text: $scope.todoText,
-			done: false
+			done: false,
+			hash: global.strHash($scope.todoText + stamp)
 		});
 		$scope.todoText = "";
 		$scope.refresh();
@@ -27,6 +30,14 @@ var TodoCtrl = function($scope) {
 		global.Brain.Todos = $scope.todos
 		global.Brain.Archive = $scope.archive;
 		global.persistBrain();
-	}
+	};
 };
 
+
+
+
+
+// document ready for non-controller work
+// $(function() {
+
+// });
