@@ -6,16 +6,31 @@
 	</script>
 
 	<script type="text/javascript" src="scripts/app.js"></script>
-	<script async type="text/javascript" src="scripts/lib/angular.min.js"></script>
-	<script async type="text/javascript" src="scripts/todo.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/snap.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/todo.js"></script>
 
 	<link rel="stylesheet" href="styles/css/bootstrap.flatly.css">
+	<link rel="stylesheet" href="styles/css/app.css">
 	<link rel="stylesheet" href="styles/css/todo.css">
 </head>
 <body>
-	<div ng-controller="TodoCtrl">
-		[ <a href="" ng-click="doArchive()">archive</a> ]
-		<ul class="unstyled">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" id="nav-toggle-btn">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a href="#" class="brand">Test</a>
+        </button>
+      </div>
+    </div>
+  </div>
+
+	<div class="content container" ng-controller="TodoCtrl">
+		<ul class="unstyled todo-items">
 			<li ng-repeat="todo in todos">
 				<label class="checkbox">
 					<input type="checkbox" ng-model="todo.done">
@@ -24,11 +39,14 @@
 			</li>
 		</ul>
 		<form ng-submit="addTodo()" class="form-inline">
-			<input type="text" ng-model="todoText"  size="30" placeholder="Conquer the world">
-			<input class="btn btn-small" type="submit" value="add">
+			<input type="text" ng-model="todoText" placeholder="Conquer the world">
+			<button class="btn btn-primary" type="submit">Add</button>
 		</form>
 
-		<small class="muted">{{remaining()}} of {{todos.length}} remaining</small>
+		<div>
+			<small class="muted">{{remaining()}} of {{todos.length}} remaining</small>
+			<small class="muted">[ <a href="" ng-click="doArchive()">archive</a> ]</small>
+		</div>
 	</div>
 </body>
 </html>

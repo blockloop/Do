@@ -1,5 +1,5 @@
 {
-    "name": "do",
+    "name": "Do",
     "version": "0.0.1",
     "main": "index.html",
     "description": "Minimal, Simple, Easy ToDo application with productivity in mind",
@@ -17,6 +17,7 @@
         "less": "*"
     },
     "window": {
+        "title": "Do",
         "icon": "app_icon.png",
         "toolbar": true,
         "width": 325,
