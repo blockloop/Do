@@ -9,54 +9,59 @@
 	<link rel="stylesheet" href="styles/css/app.css">
 	<link rel="stylesheet" href="styles/css/todo.css">
 </head>
-<body>
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a type="button" class="btn btn-navbar" id="app-menu-trigger">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <span class="brand" href="#">Do</span>
-      </div><!--/.container -->
-    </div><!--/.nav-inner -->
-  </div><!--/.navbar -->
+<body ng-controller="TodoCtrl">
+  <div class="wrap">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a type="button" class="btn btn-navbar" id="app-menu-trigger">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <span class="brand" href="#">Do</span>
+          <a type="button" class="btn btn-navbar"><i class="icon-pencil icon-white"></i></a>
+        </div><!--/.container -->
+      </div><!--/.nav-inner -->
+    </div><!--/.navbar -->
 
-  <nav class="app-menu" id="app-menu" style="display:none;">
-    <ul class="unstyled">
-      <li><a href="#">Overview</a></li>
-      <li><a href="#usage">Usage</a></li>
-      <li><a href="#inner-workings">Inner-Workings</a></li>
-      <li><a href="#animation">Animation</a></li>
-      <li><a href="#options">Options</a></li>
-      <li><a href="#api">API</a></li>
-      <li><a href="#tips">Tips &amp; Examples</a></li>
-      <li><a href="#license">License</a></li>
-      <li><a href="#changelog">Changelog</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </nav>
+    <nav class="app-menu" id="app-menu" style="display:none;">
+      <ul class="unstyled">
+        <li><a href="#">Overview</a></li>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#inner-workings">Inner-Workings</a></li>
+        <li><a href="#animation">Animation</a></li>
+        <li><a href="#options">Options</a></li>
+        <li><a href="#api">API</a></li>
+        <li><a href="#tips">Tips &amp; Examples</a></li>
+        <li><a href="#license">License</a></li>
+        <li><a href="#changelog">Changelog</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
 
-  <div class="content container" ng-controller="TodoCtrl">
-		<ul class="unstyled todo-items">
-			<li ng-repeat="todo in todos">
-				<label class="checkbox">
-					<input type="checkbox" ng-model="todo.done">
-					<span class="done-{{todo.done}}">{{todo.text}}</span>
-				</label>
-			</li>
-      <li>
-        <form ng-submit="addTodo()" class="form-inline">
-          <input type="text" ng-model="todoText" placeholder="Conquer the world">
-        </form>
-      </li>
-		</ul>
-		<div>
-			<small class="muted">{{remaining()}} of {{todos.length}} remaining</small>
-			<small class="muted">[ <a href="" ng-click="doArchive()">archive</a> ]</small>
-		</div>
-	</div>
+    <div class="content container">
+  		<ul class="unstyled todo-items">
+  			<li ng-repeat="todo in todos">
+  				<label class="checkbox">
+  					<input type="checkbox" ng-model="todo.done">
+            <span class="cb-img"></span>
+  					<span class="done-{{todo.done}}">{{todo.text}}</span>
+  				</label>
+  			</li>
+        <li>
+          <form ng-submit="addTodo()" class="form-inline">
+            <input type="text" ng-model="todoText" placeholder="Conquer the world">
+          </form>
+        </li>
+  		</ul>
+  	</div>
+  </div>
+
+  <footer class="footer">
+    <small class="muted">{{remaining()}} of {{todos.length}} remaining</small>
+    <small class="muted">[ <a href="" ng-click="doArchive()">archive</a> ]</small>
+  </footer>
 
   <!-- JS -->
   <script src="scripts/lib/bootstrap.min.js"></script>
@@ -64,7 +69,7 @@
   <script src="scripts/lib/jpanelmenu.min.js"></script>
   <script src="scripts/app.js"></script>
   <script src="scripts/todo.js"></script>
-  
+
   <!-- Fade everything in -->
   <script type="text/javascript">$($('html').fadeIn('fast',null));</script>
   <!-- /JS -->
