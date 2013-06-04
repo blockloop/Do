@@ -4,34 +4,35 @@ html {
 	font-size: 18px;
 	line-height: 1.3em;
 
-  &, & body {
-    height: 100%;
-  }
+	&, & body {
+		height: 100%;
+	}
 }
 
 .app-menu {
-  display: none;
-  background: @navbarBackground;
+	display: none;
+	background: @navbarBackground;
 
-  li {
-    padding: 10px;
-    border-bottom: 1px solid darken(@navbarBackground, 5%);
+	li {
+		border-bottom: 1px solid darken(@navbarBackground, 5%);
 
-    & a { 
-      color: @navbarLinkColor;
-      font-size: 1rem;
-    }
+		& a { 
+			color: @navbarLinkColor;
+			font-size: 1rem;
+			padding: 10px;
+			display: block;
+		}
 
-    & a:hover {
-      color: @navbarLinkColorHover;
-      text-decoration: none;
-    }
+		& a:hover {
+			color: @navbarLinkColorHover;
+			text-decoration: none;
+		}
 
-  }
+	}
 }
 
 #app-menu-trigger {
-  float: left !important;
+	float: left !important;
 }
 
 // nothing below this
