@@ -6,9 +6,9 @@
 	</script>
 
 	<script type="text/javascript" src="scripts/app.js"></script>
+  <script type="text/javascript" src="scripts/lib/bootstrap.min.js"></script>
 	<script type="text/javascript" src="scripts/lib/angular.min.js"></script>
 	<script type="text/javascript" src="scripts/lib/snap.min.js"></script>
-	<script type="text/javascript" src="scripts/lib/bootstrap.min.js"></script>
 	<script type="text/javascript" src="scripts/todo.js"></script>
 
 	<link rel="stylesheet" href="styles/css/bootstrap.flatly.css">
@@ -16,20 +16,21 @@
 	<link rel="stylesheet" href="styles/css/todo.css">
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <button type="button" class="btn btn-navbar" id="nav-toggle-btn">
+        <button type="button" class="btn btn-navbar">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          <a href="#" class="brand">Test</a>
         </button>
-      </div>
-    </div>
-  </div>
+        <a class="brand" href="#">Project name</a>
+      </div><!--/.container -->
+    </div><!--/.nav-inner -->
+  </div><!--/.navbar -->
 
-	<div class="content container" ng-controller="TodoCtrl">
+
+  <div class="content container" ng-controller="TodoCtrl">
 		<ul class="unstyled todo-items">
 			<li ng-repeat="todo in todos">
 				<label class="checkbox">
