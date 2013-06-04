@@ -31,6 +31,10 @@ var TodoCtrl = function($scope) {
 		global.Brain.Archive = $scope.archive;
 		global.persistBrain();
 	};
+
+	$scope.toggleNew = function() {
+		$('.new-todo').stop().toggle('fast');
+	};
 };
 
 

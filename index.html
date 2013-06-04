@@ -20,7 +20,7 @@
             <span class="icon-bar"></span>
           </a>
           <span class="brand" href="#">Do</span>
-          <a type="button" class="btn btn-navbar"><i class="icon-pencil icon-white"></i></a>
+          <a href="#" ng-click="toggleNew()" type="button" class="btn btn-navbar"><i class="icon-plus icon-white"></i></a>
         </div><!--/.container -->
       </div><!--/.nav-inner -->
     </div><!--/.navbar -->
@@ -42,21 +42,23 @@
 
     <div class="content container">
   		<ul class="unstyled todo-items">
-  			<li ng-repeat="todo in todos">
+  			<li ng-repeat="todo in todos" class="done-{{todo.done}}">
   				<label class="checkbox">
   					<input type="checkbox" ng-model="todo.done">
             <span class="cb-img"></span>
-  					<span class="done-{{todo.done}}">{{todo.text}}</span>
+  					<span class="todo-text">{{todo.text}}</span>
   				</label>
   			</li>
-        <li>
+        <li class="new-todo hide">
           <form ng-submit="addTodo()" class="form-inline">
             <input type="text" ng-model="todoText" placeholder="Conquer the world">
           </form>
         </li>
   		</ul>
+
+
   	</div>
-  </div>
+  </div> <!-- /wrap -->
 
   <footer class="footer">
     <small class="muted">{{remaining()}} of {{todos.length}} remaining</small>

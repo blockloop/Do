@@ -1,1 +1,1 @@
-.done-true{text-decoration:line-through;color:gray}ul.todo-items li,ul.todo-items li span{font-size:22px}
+ul.todo-items{margin-right:-20px;margin-left:-20px}ul.todo-items li{border-top:1px solid #f7f7f7;border-bottom:1px solid #c4c4c4}ul.todo-items li,ul.todo-items li *{font-size:22px}ul.todo-items li label{display:block;padding:15px}ul.todo-items li.done-true{background:#d0d0d0}ul.todo-items li.done-true .todo-text{opacity:.5;text-decoration:line-through}
