@@ -13,6 +13,7 @@ var TodoCtrl = function($scope) {
 			hash: global.strHash($scope.todoText + stamp)
 		});
 		$scope.todoText = "";
+		$scope.toggleNew(0);
 		$scope.refresh();
 	};
 
@@ -32,8 +33,10 @@ var TodoCtrl = function($scope) {
 		global.persistBrain();
 	};
 
-	$scope.toggleNew = function() {
-		$('.new-todo').stop().toggle('fast');
+	$scope.toggleNew = function(speed) {
+		if (speed == null) {speed = 'fast';}
+
+		$('.new-todo').stop().toggle(speed);
 	};
 };
 
