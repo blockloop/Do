@@ -28,18 +28,21 @@
     </div><!--/.navbar -->
 
     <nav class="app-menu" id="app-menu" style="display:none;">
-      <ul class="unstyled">
-        <li><a href="#">Overview</a></li>
-        <li><a href="#usage">Usage</a></li>
-        <li><a href="#inner-workings">Inner-Workings</a></li>
-        <li><a href="#animation">Animation</a></li>
-        <li><a href="#options">Options</a></li>
-        <li><a href="#api">API</a></li>
-        <li><a href="#tips">Tips &amp; Examples</a></li>
-        <li><a href="#license">License</a></li>
-        <li><a href="#changelog">Changelog</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
+      <div class="menu-group">
+        <span class="heading">General</span>
+        <ul class="unstyled">
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Sync</a></li>
+        </ul>
+      </div>
+      <div class="menu-group">
+        <span class="heading">Categories</span>
+        <ul class="unstyled">
+          <li ng-repeat="cat in groups">
+            <a href="#" ng-click="doFilter()">{{cat}}</a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <div class="content container">

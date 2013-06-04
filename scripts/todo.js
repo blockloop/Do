@@ -1,10 +1,13 @@
 
 var TodoCtrl = function($scope) {
 	var _ = require("underscore");
+
+	$scope.selectedGroup = global.Brain.DefaultGroup;
 	$scope.archive = global.Brain.Archive || [];
 	$scope.todos = global.Brain.Todos || [];
 	$scope.defaultGroup = global.Brain.DefaultGroup || 'All'
 	$scope.groups = global.Brain.Groups || [$scope.defaultGroup];
+	
 
 	$scope.addTodo = function() {
 		var newItem = new ToDoItem($scope);
@@ -28,6 +31,7 @@ var TodoCtrl = function($scope) {
 		global.Brain.Todos = $scope.todos
 		global.Brain.Archive = $scope.archive;
 		global.Brain.Groups = $scope.groups;
+		global.Brain.DefaultGroup = $scope.defaultGroup;
 		global.persistBrain();
 	};
 
@@ -37,11 +41,11 @@ var TodoCtrl = function($scope) {
 	};
 
 	$scope.title = function() {
-		return $scope.selectedGroup();
+		return 'All'; //$scope.selectedGroup;
 	};
 
-	$scope.selectedGroup = function() {
-		return 'All';
+	$scope.doFilter = function() {
+		alert('Worked!');
 	};
 
 };
