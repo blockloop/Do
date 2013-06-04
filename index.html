@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="scripts/app.js"></script>
   <script type="text/javascript" src="scripts/lib/bootstrap.min.js"></script>
 	<script type="text/javascript" src="scripts/lib/angular.min.js"></script>
-	<script type="text/javascript" src="scripts/lib/snap.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/jpanelmenu.min.js"></script>
 	<script type="text/javascript" src="scripts/todo.js"></script>
 
 	<link rel="stylesheet" href="styles/css/bootstrap.flatly.css">
@@ -19,15 +19,31 @@
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <button type="button" class="btn btn-navbar">
+        <a type="button" class="btn btn-navbar" id="app-menu-trigger">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </button>
-        <a class="brand" href="#">Project name</a>
+        </a>
+        <span class="brand" href="#">Do</span>
       </div><!--/.container -->
     </div><!--/.nav-inner -->
   </div><!--/.navbar -->
+
+
+  <nav class="app-menu" id="app-menu" style="display:none;">
+    <ul class="unstyled">
+      <li><a href="#">Overview</a></li>
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#inner-workings">Inner-Workings</a></li>
+      <li><a href="#animation">Animation</a></li>
+      <li><a href="#options">Options</a></li>
+      <li><a href="#api">API</a></li>
+      <li><a href="#tips">Tips &amp; Examples</a></li>
+      <li><a href="#license">License</a></li>
+      <li><a href="#changelog">Changelog</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
 
 
   <div class="content container" ng-controller="TodoCtrl">

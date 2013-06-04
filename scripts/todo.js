@@ -39,19 +39,12 @@ var TodoCtrl = function($scope) {
 
 // document ready for non-controller work
 $(function() {
-	var snapper = new Snap({
-		element: $('#nav-toggle-btn'),
-		disable: 'none',
-		addBodyClasses: true,
-		resistance: 0.5,
-		flickThreshold: 50,
-		transitionSpeed: 0.3,
-		easing: 'ease',
-		maxPosition: 266,
-		minPosition: -266,
-		tapToClose: true,
-		touchToDrag: true,
-	    slideIntent: 40,
-	    minDragDistance: 5
-	});
+	global.jpmenu = $.jPanelMenu({
+		menu: '#app-menu',
+		trigger: '#app-menu-trigger',
+		duration: 300,
+		openPosition: "200px"
+	});	
+
+	global.jpmenu.on();
 });

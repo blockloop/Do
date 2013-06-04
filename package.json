@@ -19,7 +19,7 @@
     "window": {
         "title": "Do",
         "icon": "app_icon.png",
-        "toolbar": true,
+        "toolbar": false,
         "width": 325,
         "height": 535,
         "position": "center",

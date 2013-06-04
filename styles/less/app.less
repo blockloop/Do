@@ -1,12 +1,41 @@
+@import './variables';
+
 html {
 	font-size: 18px;
 	line-height: 1.3em;
+
+  &, & body {
+    height: 100%;
+  }
 }
 
 .container {
 	margin-right: 10px !important;
 	margin-left: 10px !important;
 	width: auto !important;
+}
+
+.app-menu {
+  display: none;
+  background: @navbarBackground;
+
+  li {
+    padding: 10px 5px;
+    border-bottom: 1px solid darken(@navbarBackground, 5%);
+
+    & a { 
+      color: @navbarLinkColor;
+      font-size: 1rem;
+    }
+    & a:hover{
+      color: @navbarLinkColorHover;
+    }
+
+  }
+}
+
+#app-menu-trigger {
+  float: left !important;
 }
 
 // nothing below this
