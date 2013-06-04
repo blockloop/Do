@@ -14,3 +14,4 @@ global.strHash = function(str) {
 };
 
 global.Brain = global.loadBrain();
+
