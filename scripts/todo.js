@@ -1,17 +1,14 @@
-var _ = require("underscore");
 
 var TodoCtrl = function($scope) {
-	$scope.archive = global.Brain.Archive;
-	$scope.todos = global.Brain.Todos;
+	var _ = require("underscore");
+	$scope.archive = global.Brain.Archive || [];
+	$scope.todos = global.Brain.Todos || [];
+	$scope.defaultGroup = global.Brain.DefaultGroup || 'All'
+	$scope.groups = global.Brain.Groups || [$scope.defaultGroup];
 
 	$scope.addTodo = function() {
-		var stamp = new Date().getTime();
-		$scope.todos.push({
-			created: stamp,
-			text: $scope.todoText,
-			done: false,
-			hash: global.strHash($scope.todoText + stamp)
-		});
+		var newItem = new ToDoItem($scope);
+		$scope.todos.push(newItem);
 		$scope.todoText = "";
 		$scope.toggleNew(0);
 		$scope.refresh();
@@ -30,16 +27,35 @@ var TodoCtrl = function($scope) {
 	$scope.refresh = function() {
 		global.Brain.Todos = $scope.todos
 		global.Brain.Archive = $scope.archive;
+		global.Brain.Groups = $scope.groups;
 		global.persistBrain();
 	};
 
 	$scope.toggleNew = function(speed) {
 		if (speed == null) {speed = 'fast';}
-
 		$('.new-todo').stop().toggle(speed);
 	};
+
+	$scope.title = function() {
+		return $scope.selectedGroup();
+	};
+
+	$scope.selectedGroup = function() {
+		return 'All';
+	};
+
 };
 
+
+var ToDoItem = function(scope) {
+	var self = this;
+	var stamp = new Date().getTime();
+	self.created = stamp,
+	self.text = scope.todoText, 
+	self.group = $scope.group || $scope.defaultGroup,
+	self.done = false,
+	self.hash = global.strHash(self.todoText + self.group + stamp)
+};
 
 
 

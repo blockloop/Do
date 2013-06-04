@@ -1,4 +1,4 @@
-global.Brain = {Archive: [], Todos: []};
+global.Brain = {Archive: [], Todos: [], Groups: []};
 
 global.persistBrain = function() {
 	localStorage.setItem('brain',JSON.stringify(global.Brain));
@@ -6,7 +6,7 @@ global.persistBrain = function() {
 
 global.loadBrain = function() {
 	try {return JSON.parse(localStorage.getItem('brain')); } catch(e){}
-	return {Archive: [], Todos: []};
+	return {Archive: [], Todos: [], Groups: []};
 };
 
 global.strHash = function(str) {
@@ -14,4 +14,3 @@ global.strHash = function(str) {
 };
 
 global.Brain = global.loadBrain();
-

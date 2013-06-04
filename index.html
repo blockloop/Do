@@ -19,7 +19,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <span class="brand" href="#">Do</span>
+
+          <span class="brand" href="#">{{title()}}</span>
+
           <a href="#" ng-click="toggleNew()" type="button" class="btn btn-navbar"><i class="icon-plus icon-white"></i></a>
         </div><!--/.container -->
       </div><!--/.nav-inner -->
@@ -44,7 +46,7 @@
   		<ul class="unstyled todo-items">
   			<li ng-repeat="todo in todos" class="done-{{todo.done}}">
   				<label class="checkbox">
-  					<input type="checkbox" ng-model="todo.done">
+  					<input type="checkbox" ng-model="todo.done"/>
             <span class="cb-img"></span>
   					<span class="todo-text">{{todo.text}}</span>
   				</label>
