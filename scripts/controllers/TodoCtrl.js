@@ -1,18 +1,23 @@
-doApp.controller('TodoCtrl', ['$scope','brainService', 
-	function($scope, brainService) {
-		var brain = brainService.getBrain();
+doApp.controller('TodoCtrl', ['$scope','storageService', 
+	function($scope, storageService) {
+		var brain = storageService.getBrain();
+		var cache = storageService.getCache();
 
-		$scope.archive = brain.archive;
-		$scope.todos = brain.todos;
-		$scope.groups = brain.groups;
-		$scope.selectedGroup = brain.groups[0];
-		
+		$scope.todos = [];
+		$scope.archive = [];
+		$scope.groups = [];
+
+		$.extend($scope, brain);
+
+		$scope.selectedGroup = $scope.groups[0];
+		$scope.title = $scope.selectedGroup || 'All';
+		$scope.showNew = false;
 
 		$scope.addTodo = function() {
 			var newItem = new ToDoItem($scope);
 			$scope.todos.push(newItem);
 			$scope.todoText = "";
-			$scope.toggleNew(0);
+			$scope.toggleNew();
 			$scope.refresh();
 		};
 
@@ -30,25 +35,16 @@ doApp.controller('TodoCtrl', ['$scope','brainService',
 			brain.todos = $scope.todos
 			brain.archive = $scope.archive;
 			brain.groups = $scope.groups;
-			brainService.saveBrain(brain);
+			storageService.save();
 		};
 
-		$scope.toggleNew = function(speed) {
-			if (speed == null) {speed = 'fast';}
-			$('.new-todo').stop().toggle(speed);
-		};
-
-		$scope.title = function () {
-			return $scope.selectedGroup;
+		$scope.toggleNew = function() {
+			$scope.showNew = !$scope.showNew;
 		};
 
 		$scope.setFilterGroup = function (group) {
 			$scope.selectedGroup = group;
 		};
-
-		$scope.$watch('$scope', function(newValue, oldValue) {
-			console.log(JSON.stringify($scope));
-		});
 	}
 ]);
 
