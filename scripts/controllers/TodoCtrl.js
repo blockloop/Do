@@ -5,21 +5,21 @@ doApp.controller('TodoCtrl', ['$scope','storageService',
 
 		$scope.todos = [];
 		$scope.archive = [];
-		$scope.groups = [];
+		$scope.categories = ['All'];
 		$.extend($scope, brain); // load from memory
-		$scope.selectedGroup = $scope.groups[0];
-		$scope.title = $scope.selectedGroup || 'All';
+		$scope.selectedCategory = $scope.categories[0];
+		$scope.title = $scope.selectedCategory || 'All';
 		$scope.showNew = false;
 
 		$scope.addTodo = function() {
 			$scope.todos.push({
 				created: new Date().getTime(),
 				text: $scope.todoText, 
-				group: $scope.selectedGroup,
+				category: $scope.selectedCategory,
 				done: false});
 
 			$scope.todoText = "";
-			$scope.toggleNew();
+			$scope.showNew = false;
 			$scope.refresh();
 		};
 
@@ -36,7 +36,7 @@ doApp.controller('TodoCtrl', ['$scope','storageService',
 		$scope.refresh = function() {
 			brain.todos = $scope.todos;
 			brain.archive = $scope.archive;
-			brain.groups = $scope.groups;
+			brain.categories = $scope.categories;
 			storageService.save(brain);
 		};
 
@@ -44,8 +44,8 @@ doApp.controller('TodoCtrl', ['$scope','storageService',
 			$scope.showNew = !$scope.showNew;
 		};
 
-		$scope.setFilterGroup = function (group) {
-			$scope.selectedGroup = group;
+		$scope.setFilterCategory = function (category) {
+			$scope.selectedCategory = category;
 		};
 
 		$scope.$watch('todos', function(oldValue, newValue) {

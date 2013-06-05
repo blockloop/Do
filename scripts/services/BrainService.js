@@ -13,8 +13,8 @@ doApp.service('storageService',
 				return JSON.parse(cache);
 			},
 			save:function (newBrain) {
-				newBrain = JSON.stringify(newBrain);
-				localStorage.brain = newBrain;
+				newBrain = $.extend(this.getBrain(), newBrain);
+				localStorage.brain = JSON.stringify(newBrain);
 			}
 		}
 	}

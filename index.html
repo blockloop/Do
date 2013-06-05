@@ -23,7 +23,7 @@
       </div><!--/.nav-inner -->
     </div><!--/.navbar -->
 
-    <div jpmenu trigger="#app-menu-trigger" class="app-menu" id="app-menu" style="display:none;">
+    <jpmenu ng-controller="TodoCtrl" trigger="#app-menu-trigger" class="app-menu" id="app-menu" style="display:none;">
       <div class="menu-group">
         <span class="heading">General</span>
         <ul class="unstyled">
@@ -34,17 +34,17 @@
       <div class="menu-group">
         <span class="heading">Categories</span>
         <ul class="unstyled">
-          <li ng-repeat="category in groups" ng-click="setFilterGroup (category)">
-            <a href="#" ng-model="query.group">{{ category }}</a>
+          <li ng-repeat="category in categories">
+            <a href="#" ng-click="setFilterCategory(category)">{{ category }}</a>
           </li>
         </ul>
       </div>
-    </div>
+    </jpmenu>
 
     <div class="content container">
   		<ul class="unstyled todo-items">
         <li class="new-todo">
-          <form ng-submit="addTodo()" class="form-inline">
+          <form ng-submit="addTodo()" class="form-inline" ng-show="showNew" ng-animate>
             <input id="new-todo-text" type="text" ng-model="todoText" placeholder="Conquer the world">
           </form>
         </li>
@@ -61,14 +61,14 @@
   	</div>
   </div> <!-- /wrap -->
 
-  <div class="debug">
-    {{ { Todos: todos, Groups: groups, SelectedGroup: selectedGroup } | json }}
-  </div>
-
   <footer class="footer">
     <small class="muted">{{remaining()}} of {{todos.length}} remaining</small>
     <small class="muted">[ <a href="" ng-click="doArchive()">archive</a> ]</small>
   </footer>
+
+  <div class="debug">
+    {{ { Todos: todos, Categories: categories, SelectedGroup: selectedGroup } | json }}
+  </div>
 
   <!-- JS -->
   <script type="text/javascript">
