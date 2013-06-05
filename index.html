@@ -1,15 +1,11 @@
 <!doctype html>
-<html ng-app style="display:none;">
+<html ng-app="doApp" ng-cloak ng-controller="TodoCtrl">
 <head>
-	<script type="text/javascript">
-		window.$ = require('jquery');
-	</script>
-
 	<link rel="stylesheet" href="styles/css/bootstrap.flatly.css">
 	<link rel="stylesheet" href="styles/css/app.css">
 	<link rel="stylesheet" href="styles/css/todo.css">
 </head>
-<body ng-controller="TodoCtrl">
+<body>
   <div class="wrap">
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -38,8 +34,8 @@
       <div class="menu-group">
         <span class="heading">Categories</span>
         <ul class="unstyled">
-          <li ng-repeat="cat in groups">
-            <a href="#" ng-click="doFilter()">{{cat}}</a>
+          <li ng-repeat="category in groups" ng-click="setFilterGroup (category)">
+            <a href="#" ng-model="query.group">{{ category }}</a>
           </li>
         </ul>
       </div>
@@ -47,7 +43,7 @@
 
     <div class="content container">
   		<ul class="unstyled todo-items">
-  			<li ng-repeat="todo in todos" class="done-{{todo.done}}">
+  			<li ng-repeat="todo in todos | filter:query" class="done-{{todo.done}}">
   				<label class="checkbox">
   					<input type="checkbox" ng-model="todo.done"/>
             <span class="cb-img"></span>
@@ -65,20 +61,28 @@
   	</div>
   </div> <!-- /wrap -->
 
+  <div class="debug">
+    {{ { Todos: todos, Groups: groups, SelectedGroup: selectedGroup } | json }}
+  </div>
+
   <footer class="footer">
     <small class="muted">{{remaining()}} of {{todos.length}} remaining</small>
     <small class="muted">[ <a href="" ng-click="doArchive()">archive</a> ]</small>
   </footer>
 
   <!-- JS -->
+  <script type="text/javascript">
+    window.$ = require('jquery');
+    window._ = require('underscore');
+  </script>
+
+
   <script src="scripts/lib/bootstrap.min.js"></script>
   <script src="scripts/lib/angular.min.js"></script>
   <script src="scripts/lib/jpanelmenu.min.js"></script>
   <script src="scripts/app.js"></script>
-  <script src="scripts/todo.js"></script>
-
-  <!-- Fade everything in -->
-  <script type="text/javascript">$($('html').fadeIn('fast',null));</script>
+  <script src="scripts/services/BrainService.js"></script>
+  <script src="scripts/controllers/TodoCtrl.js"></script>
   <!-- /JS -->
 </body>
 </html>

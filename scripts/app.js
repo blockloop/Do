@@ -1,16 +1,11 @@
-global.Brain = {Archive: [], Todos: [], Groups: []};
+var doApp = angular.module('doApp', []);
 
-global.persistBrain = function() {
-	localStorage.setItem('brain',JSON.stringify(global.Brain));
-};
 
-global.loadBrain = function() {
-	try {return JSON.parse(localStorage.getItem('brain')); } catch(e){}
-	return {Archive: [], Todos: [], Groups: []};
-};
-
-global.strHash = function(str) {
-	return str.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
-};
-
-global.Brain = global.loadBrain();
+global.jpmenu = $.jPanelMenu({
+	menu: '#app-menu',
+	trigger: '#app-menu-trigger',
+	duration: 250,
+	openPosition: "250px"
+})
+.on()
+;	
