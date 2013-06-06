@@ -1,14 +1,18 @@
-doApp.controller('TodoCtrl', ['$scope','storageService', 
+doApp.controller('TodoCtrl', ['$scope','storageService',
 
 	function($scope, storageService) {
 		var brain = storageService.getBrain();
+		var _ = require('underscore');
+		var $ = require('jquery');
 
 		$scope.todos = [];
 		$scope.archive = [];
-		$scope.categories = ['All'];
+		$scope.categories = [];
 		$.extend($scope, brain); // load from memory
+
+		if ($scope.categories[0] != 'All') { $scope.categories.splice(1,0,'All'); }
 		$scope.selectedCategory = $scope.categories[0];
-		$scope.title = $scope.selectedCategory || 'All';
+		$scope.title = $scope.selectedCategory;
 		$scope.showNew = false;
 
 		$scope.addTodo = function() {
@@ -37,7 +41,7 @@ doApp.controller('TodoCtrl', ['$scope','storageService',
 			brain.todos = $scope.todos;
 			brain.archive = $scope.archive;
 			brain.categories = $scope.categories;
-			storageService.save(brain);
+			storageService.saveBrain(brain);
 		};
 
 		$scope.toggleNew = function() {
@@ -47,10 +51,6 @@ doApp.controller('TodoCtrl', ['$scope','storageService',
 		$scope.setFilterCategory = function (category) {
 			$scope.selectedCategory = category;
 		};
-
-		$scope.$watch('todos', function(oldValue, newValue) {
-			// alert('todos changed from ' + oldValue.toString() + ' to ' + newValue.toString());
-		});
 	}
 ]);
 

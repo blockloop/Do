@@ -1,1 +1,1 @@
-require 'node-webkit-bootstrap'
+gem 'node-webkit-bootstrap'

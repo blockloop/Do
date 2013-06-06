@@ -9,7 +9,7 @@ doApp.directive('jpmenu', function($timeout) {
 					duration: attrs.duration || 250,
 					openPosition: attrs.openPosition || "250px"
 				}).on();
-			}, 30);
+			}, 500);
 		}
 	};
 });

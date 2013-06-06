@@ -24,27 +24,23 @@
     </div><!--/.navbar -->
 
     <jpmenu ng-controller="TodoCtrl" trigger="#app-menu-trigger" class="app-menu" id="app-menu" style="display:none;">
-      <div class="menu-group">
-        <span class="heading">General</span>
-        <ul class="unstyled">
-          <li><a href="#">Settings</a></li>
-          <li><a href="#">Sync</a></li>
-        </ul>
-      </div>
-      <div class="menu-group">
-        <span class="heading">Categories</span>
-        <ul class="unstyled">
-          <li ng-repeat="category in categories">
-            <a href="#" ng-click="setFilterCategory(category)">{{ category }}</a>
-          </li>
-        </ul>
-      </div>
+      <span class="heading">General</span>
+      <ul class="unstyled">
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Sync</a></li>
+      </ul>
+      <span class="heading">Categories</span>
+      <ul class="unstyled">
+        <li ng-repeat="category in categories">
+          <a href="#" ng-click="setFilterCategory(category)">{{ category }}</a>
+        </li>
+      </ul>
     </jpmenu>
 
     <div class="content container">
   		<ul class="unstyled todo-items">
         <li class="new-todo">
-          <form ng-submit="addTodo()" class="form-inline" ng-show="showNew" ng-animate>
+          <form focus ng-submit="addTodo()" class="form-inline" ng-show="showNew" ng-animate>
             <input id="new-todo-text" type="text" ng-model="todoText" placeholder="Conquer the world">
           </form>
         </li>
@@ -71,12 +67,6 @@
   </div>
 
   <!-- JS -->
-  <script type="text/javascript">
-    window.$ = require('jquery');
-    window._ = require('underscore');
-  </script>
-
-
   <script src="scripts/lib/bootstrap.min.js"></script>
   <script src="scripts/lib/angular.min.js"></script>
   <script src="scripts/lib/jpanelmenu.min.js"></script>
