@@ -19,6 +19,17 @@ body, .jPanelmenu {
 
 .navbar-fixed-top {
 	margin-bottom: 0;
+
+    .brand {
+        margin: auto;
+        float: none;
+        text-align: center;
+
+        &:hover {
+            color: @navbarText;
+        }
+    }
+
 }
 
 jpmenu {
@@ -73,6 +84,11 @@ form {
 	margin: 0;
 }
 
+a {
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
 /*
 *
   Checkboxes found at http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-easy-css3-checkboxes-and-radio-buttons/ 
@@ -119,6 +135,10 @@ input[type="radio"]:checked + span.cb-img {
     background:url(../../img/check_radio_sheet.png) -57px top no-repeat;
 }
 // /checkboxes
+
+
+
+
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none;

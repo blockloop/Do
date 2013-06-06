@@ -15,10 +15,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-
-          <span class="brand" href="#">{{ title }}</span>
-
           <a href="#" ng-click="toggleNew()" type="button" class="btn btn-navbar"><i class="icon-plus icon-white"></i></a>
+          <div class="brand" href="#">{{ title }}</div>
         </div><!--/.container -->
       </div><!--/.nav-inner -->
     </div><!--/.navbar -->
@@ -68,11 +66,17 @@
 
   <!-- JS -->
   <script src="scripts/lib/bootstrap.min.js"></script>
-  <script src="scripts/lib/angular.min.js"></script>
   <script src="scripts/lib/jpanelmenu.min.js"></script>
+  <script src="scripts/lib/angular.min.js"></script>
   <script src="scripts/app.js"></script>
+
+  <!-- Directives -->
   <script src="scripts/directives.js"></script>
+
+  <!-- Services -->
   <script src="scripts/services/BrainService.js"></script>
+
+  <!-- Controllers -->
   <script src="scripts/controllers/TodoCtrl.js"></script>
   <!-- /JS -->
 </body>
