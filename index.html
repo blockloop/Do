@@ -21,7 +21,7 @@
       </div><!--/.nav-inner -->
     </div><!--/.navbar -->
 
-    <jpmenu ng-controller="TodoCtrl" trigger="#app-menu-trigger" class="app-menu" id="app-menu" style="display:none;">
+    <jpmenu trigger="#app-menu-trigger" class="app-menu" id="app-menu" style="display:none;">
       <span class="heading">General</span>
       <ul class="unstyled">
         <li><a href="#">Settings</a></li>
@@ -37,9 +37,9 @@
 
     <div class="content container">
   		<ul class="unstyled todo-items">
-        <li class="new-todo">
-          <form focus ng-submit="addTodo()" class="form-inline" ng-show="showNew" ng-animate>
-            <input id="new-todo-text" type="text" ng-model="todoText" placeholder="Conquer the world">
+        <li class="new-todo" ng-show="showNew" >
+          <form focus ng-submit="addTodo(todo,selectedCategory)" class="form-inline" ng-animate>
+            <input ng-model="todo.text" required id="new-todo-text" type="text" placeholder="Conquer the world"/>
           </form>
         </li>
   			<li ng-repeat="todo in todos | filter:query" class="done-{{todo.done}}">
@@ -60,9 +60,9 @@
     <small class="muted">[ <a href="" ng-click="doArchive()">archive</a> ]</small>
   </footer>
 
-  <div class="debug">
+  <pre debug>
     {{ { Todos: todos, Categories: categories, SelectedGroup: selectedGroup } | json }}
-  </div>
+  </pre>
 
   <!-- JS -->
   <script src="scripts/lib/bootstrap.min.js"></script>

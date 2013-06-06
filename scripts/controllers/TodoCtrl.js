@@ -1,4 +1,4 @@
-doApp.controller('TodoCtrl', ['$scope','storageService',
+doApp.controller('TodoCtrl',
 
 	function($scope, storageService) {
 		var brain = storageService.getBrain();
@@ -15,11 +15,11 @@ doApp.controller('TodoCtrl', ['$scope','storageService',
 		$scope.title = $scope.selectedCategory;
 		$scope.showNew = false;
 
-		$scope.addTodo = function() {
+		$scope.addTodo = function(todo,category) {
 			$scope.todos.push({
 				created: new Date().getTime(),
-				text: $scope.todoText, 
-				category: $scope.selectedCategory,
+				text: todo.text, 
+				category: category,
 				done: false});
 
 			$scope.todoText = "";
@@ -52,5 +52,5 @@ doApp.controller('TodoCtrl', ['$scope','storageService',
 			$scope.selectedCategory = category;
 		};
 	}
-]);
+);
 
