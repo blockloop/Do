@@ -12,9 +12,13 @@ doApp.service('storageService',
 				cache = cache || "{}";
 				return JSON.parse(cache);
 			},
-			save:function (newBrain) {
+			saveBrain:function (newBrain) {
 				newBrain = $.extend(this.getBrain(), newBrain);
 				localStorage.brain = JSON.stringify(newBrain);
+			},
+			saveCache:function (newCache) {
+				newCache = $.extend(this.getCache(), newCache);
+				sessionStorage.brain = JSON.stringify(newCache);
 			}
 		}
 	}

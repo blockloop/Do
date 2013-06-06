@@ -1,11 +1,7 @@
 doApp.directive('jpmenu', function() {
 	return {
-		// Restrict it to be an attribute in this case
 		restrict: 'E',
-		// responsible for registering DOM listeners as well as updating the DOM
 		link: function(scope, element, attrs) {
-			console.log('element: ' + element.toString());
-
 			$.jPanelMenu({
 				menu: '#' + attrs.id.toString(),
 				trigger: attrs.trigger.toString(),
