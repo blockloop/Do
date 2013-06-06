@@ -6,6 +6,20 @@
 	<link rel="stylesheet" href="styles/css/todo.css">
 </head>
 <body>
+  <jpmenu trigger="#app-menu-trigger" class="app-menu" id="app-menu" style="display:none;">
+    <span class="heading">General</span>
+    <ul class="unstyled">
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Sync</a></li>
+    </ul>
+    <span class="heading">Categories</span>
+    <ul class="unstyled">
+      <li ng-repeat="category in categories">
+        <a href="#" ng-click="setFilterCategory(category)">{{ category }}</a>
+      </li>
+    </ul>
+  </jpmenu>
+
   <div class="wrap">
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -20,20 +34,6 @@
         </div><!--/.container -->
       </div><!--/.nav-inner -->
     </div><!--/.navbar -->
-
-    <jpmenu trigger="#app-menu-trigger" class="app-menu" id="app-menu" style="display:none;">
-      <span class="heading">General</span>
-      <ul class="unstyled">
-        <li><a href="#">Settings</a></li>
-        <li><a href="#">Sync</a></li>
-      </ul>
-      <span class="heading">Categories</span>
-      <ul class="unstyled">
-        <li ng-repeat="category in categories">
-          <a href="#" ng-click="setFilterCategory(category)">{{ category }}</a>
-        </li>
-      </ul>
-    </jpmenu>
 
     <div class="content container">
   		<ul class="unstyled todo-items">
@@ -55,12 +55,18 @@
   	</div>
   </div> <!-- /wrap -->
 
-  <footer class="footer">
-    <small class="muted">{{remaining()}} of {{todos.length}} remaining</small>
-    <small class="muted">[ <a href="" ng-click="doArchive()">archive</a> ]</small>
+  <footer class="footer muted">
+    <small>{{remaining()}} of {{todos.length}} remaining</small>
+    <small>[ <a href="#" ng-click="doArchive()">archive</a> ]</small>
+
+    <label debug class="checkbox" style="display:inline;">
+      <input type="checkbox" ng-model="showDebug"/>
+      <span class="cb-img"></span>
+      <small class="text">Show Debug</small>
+    </label>
   </footer>
 
-  <pre debug>
+  <pre debug ng-show="showDebug">
     {{ { Todos: todos, Categories: categories, SelectedGroup: selectedGroup } | json }}
   </pre>
 
