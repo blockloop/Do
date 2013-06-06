@@ -4,6 +4,7 @@ doApp.controller('TodoCtrl',
 		var brain = storageService.getBrain();
 		var _ = require('underscore');
 		var $ = require('jquery');
+		$scope.data = brain;
 
 		$scope.todos = [];
 		$scope.archive = [];
