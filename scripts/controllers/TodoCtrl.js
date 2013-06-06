@@ -23,7 +23,7 @@ doApp.controller('TodoCtrl',
 				category: category,
 				done: false});
 
-			$scope.todoText = "";
+			todo.text = "";
 			$scope.showNew = false;
 		};
 
