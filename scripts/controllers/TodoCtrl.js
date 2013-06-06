@@ -24,7 +24,6 @@ doApp.controller('TodoCtrl',
 
 			$scope.todoText = "";
 			$scope.showNew = false;
-			$scope.refresh();
 		};
 
 		$scope.remaining = function() {
@@ -34,14 +33,6 @@ doApp.controller('TodoCtrl',
 		$scope.doArchive = function() {
 			$scope.archive = _.filter($scope.todos, function(todo) { return todo.done; });
 			$scope.todos = _.filter($scope.todos, function(todo) { return !todo.done; });
-			$scope.refresh();
-		};
-
-		$scope.refresh = function() {
-			brain.todos = $scope.todos;
-			brain.archive = $scope.archive;
-			brain.categories = $scope.categories;
-			storageService.saveBrain(brain);
 		};
 
 		$scope.toggleNew = function() {
@@ -51,6 +42,13 @@ doApp.controller('TodoCtrl',
 		$scope.setFilterCategory = function (category) {
 			$scope.selectedCategory = category;
 		};
+
+		angular.forEach(['todos','archive','categories'], function (prop) { 
+			$scope.$watch(prop, function(newValue) {
+				brain[prop] = newValue;
+				storageService.saveBrain(brain);
+			}, true);
+		});
 	}
 );
 
