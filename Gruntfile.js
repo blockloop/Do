@@ -1,5 +1,13 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
+    jshint: {
+      allFiles: [
+        'Gruntfile.js',
+        'scripts/controllers/*js',
+        'scripts/services/*js',
+        'scripts/*js',
+      ]
+    },
 		less: {
 			development: {
 				options: {
@@ -7,25 +15,33 @@ module.exports = function(grunt) {
 					yuicompress: true
 				},
 				files: [{
-                    expand: true,        // Enable dynamic expansion.
-                    cwd: './styles/less',  // Src matches are relative to this path.
-                    src: ['*.less'],     // Actual pattern(s) to match.
-                    dest: './styles/css',  // Destination path prefix.
-                    ext: '.css',         // Dest filepaths will have this extension.
-                }]
+            expand: true,        // Enable dynamic expansion.
+            cwd: './styles/less',  // Src matches are relative to this path.
+            src: ['*.less'],     // Actual pattern(s) to match.
+            dest: './styles/css',  // Destination path prefix.
+            ext: '.css',         // Dest filepaths will have this extension.
+        }]
 			}
 		},
 		watch: {
 			less: {
 				files: "./styles/less/*",
 				tasks: ["less"]
-			}
-		},
+			},
+      scripts: {
+        files: '**/*.js',
+        tasks: ['jshint'],
+        options: {
+          interrupt: true,
+        },
+      },
+		}
 	});
 
 	// Default task.
 	grunt.registerTask('default', 'watch');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 };
 

@@ -20,6 +20,6 @@ doApp.factory('storageService', function() {
 			newCache = $.extend({}, this.getCache(), newCache);
 			sessionStorage.brain = JSON.stringify(newCache);
 		}
-	}
+	};
 });
 
