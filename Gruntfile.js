@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 				tasks: ["less"]
 			},
       scripts: {
-        files: '**/*.js',
+        files: ['./scripts/**/*.js','Gruntfile.js'],
         tasks: ['jshint'],
         options: {
           interrupt: true,
