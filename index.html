@@ -14,7 +14,7 @@
     </ul>
     <span class="heading">Categories</span>
     <ul class="unstyled">
-      <li ng-repeat="category in categories">
+      <li ng-repeat="category in categories" class="ng-scope">
         <a href="#" ng-click="setFilterCategory(category)">{{ category }}</a>
       </li>
     </ul>
@@ -30,7 +30,10 @@
             <span class="icon-bar"></span>
           </a>
           <a href="#" ng-click="toggleNew()" type="button" class="btn btn-navbar"><i class="icon-plus icon-white"></i></a>
-          <div class="brand" href="#">{{ title }}</div>
+          <div class="brand" href="#">
+            {{ title }}
+            <sup><small>{{ remaining() }}</small></sup>
+          </div>
         </div><!--/.container -->
       </div><!--/.nav-inner -->
     </div><!--/.navbar -->
@@ -50,25 +53,20 @@
   				</label>
   			</li>
   		</ul>
-
-
   	</div>
   </div> <!-- /wrap -->
 
   <footer class="footer muted">
-    <small>{{remaining()}} of {{todos.length}} remaining</small>
-    <small>[ <a href="#" ng-click="doArchive()">archive</a> ]</small>
-
+    <small>[<a href="#" ng-click="doArchive()">archive</a>]</small>&nbsp;
     <label debug class="checkbox" style="display:inline;">
       <input type="checkbox" ng-model="showDebug"/>
       <span class="cb-img"></span>
       <small class="text">Show Debug</small>
     </label>
+    <pre debug ng-show="showDebug">
+      {{ data | json }}
+    </pre>
   </footer>
-
-  <pre debug ng-show="showDebug">
-    {{ data | json }}
-  </pre>
 
   <!-- JS -->
   <script src="scripts/lib/bootstrap.min.js"></script>

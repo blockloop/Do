@@ -41,6 +41,7 @@ doApp.controller('TodoCtrl',
 		};
 
 		$scope.setFilterCategory = function (category) {
+			alert('Setting category filter to ' + category.toString());
 			$scope.selectedCategory = category;
 		};
 
