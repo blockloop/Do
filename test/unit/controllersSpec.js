@@ -1,4 +1,5 @@
 'use strict';
+var ng = window.angular;
 
 // it('should send a message', inject(function(chatService) {
 // 	chatService.sendMsg({test:"Message"});
@@ -21,7 +22,7 @@ describe('unit: ChatCtrl', function () {
         sendMsg: function (msg) {
             console.log('Sent message: ' + JSON.stringify(msg));
         },
-        getStatuses: function () { 
+        getStatuses: function () {
         	return ["status"];
         },
         setMessageHandler: function () {},
@@ -33,8 +34,8 @@ describe('unit: ChatCtrl', function () {
     var mockNotifyService = {}
 
     //you need to indicate your module in a test
-    beforeEach(module('imApp'));
-    beforeEach(module('storageService'));
+    beforeEach(ng.module('doApp'));
+    beforeEach(ng.module('brainService'));
 
     /* IMPORTANT!
      * this is where we're setting up the $scope and

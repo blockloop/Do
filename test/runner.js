@@ -8,9 +8,9 @@ var jsdom = require('jsdom').jsdom;
 global.assert = chai.assert;
 global.document = jsdom('<html><head><script></script></head><body><input type="text" id="globalAccountNumber" value="1" /><div id="testDiv"></div></body></html>');
 global.window = document.createWindow();
-global.$ = require("jquery").create(window);
-global._ = require('lodash');
-DEBUG = false;
+var $ = global.$ = require("jquery").create(window);
+var _ = global._ = require('lodash');
+var DEBUG = false;
 global.navigator = window.navigator = {};
 navigator.userAgent = 'NodeJs JsDom';
 chai.use(sinonChai);
@@ -22,10 +22,10 @@ mocha.opts = [{globals: ['angular','module','window.angular']}];
 mocha.files = [];
 
 var requires = [
-    'js/lib/angular*.js',
+    'scripts/lib/angular*.js',
     'test/lib/angular/angular-mocks.js',
-    'js/*/*.js',
-    'js/app.js'
+    'scripts/*/*.js',
+    'scripts/app.js'
 ];
 var specs = [
     'test/unit/**/*spec.js'
