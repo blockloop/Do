@@ -10,9 +10,8 @@
     "do"
   ],
   "dependencies": {
-    "angular": ">= 0.0.4",
-    "jquery": ">= 1.8.3",
-    "underscore": "*"
+    "jquery": "~1.8.3",
+    "lodash": "~2.4.1"
   },
   "devDependencies": {
     "grunt-cli": "*",

@@ -3,9 +3,9 @@ module.exports = function(grunt) {
     jshint: {
       allFiles: [
         'Gruntfile.js',
-        'scripts/controllers/*js',
-        'scripts/services/*js',
-        'scripts/*js',
+        'scripts/**/*js',
+        '!scripts/lib/*',
+        '!scripts/lib/**/*'
       ]
     },
 		less: {
